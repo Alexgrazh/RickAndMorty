@@ -7,6 +7,7 @@
 
 import Foundation
 
-finalec class RMRequrst {
+final class RMRequrst {
+    
     
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 
-@frozen enum RMEndpoint {
+@frozen enum RMEndpoint : String {
     case character
     case location
     case episode

@@ -10,7 +10,7 @@ import Foundation
 // MARK: - RMAPI
 struct RMCharacter: Codable {
     let info: Info
-    let results: [Result]
+    let results: [ResultCharacter]
 }
 
 // MARK: - Info
@@ -21,7 +21,7 @@ struct Info: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct ResultCharacter: Codable {
     let id: Int
     let name: String
     let status: Status

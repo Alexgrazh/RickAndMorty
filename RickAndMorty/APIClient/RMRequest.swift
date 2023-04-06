@@ -7,14 +7,14 @@
 
 import Foundation
 
-final class RMRequrst {
+final class RMRequest {
     private struct Conctantc {
        static let baceUrl = "https://rickandmortyapi.com/api"
     }
     
    private let endpoint: RMEndpoint
     
-    private let pathComponents: Set<String>
+    private let pathComponents: [String]
     
     private let queryParameters: [URLQueryItem]
     
@@ -47,11 +47,18 @@ final class RMRequrst {
         return URL(string: urlString)
     }
     
+    public let httpMethod = "GET"
+    
     //MARK: - Public
     
-   public init(endpoint: RMEndpoint, queryParameters: [URLQueryItem] = [],pathComponents: Set<String> = []) {
+   public init(endpoint: RMEndpoint, queryParameters: [URLQueryItem] = [],pathComponents: [String] = []) {
         self.endpoint = endpoint
         self.queryParameters = queryParameters
         self.pathComponents = pathComponents
     }
+}
+
+extension RMRequest{
+    static let listCharactersRequests = RMRequest(endpoint: .character
+    )
 }

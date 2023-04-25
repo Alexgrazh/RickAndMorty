@@ -39,6 +39,7 @@ enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
+    
 }
 
 // MARK: - Location
@@ -56,6 +57,16 @@ enum Status: String, Codable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
+    
+    var text: String {
+        switch self{
+            
+        case .alive,.dead:
+         return rawValue
+        case .unknown:
+            return "Unknown"
+        }
+    }
 }
 
 //// MARK: - Encode/decode helpers

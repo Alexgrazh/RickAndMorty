@@ -15,6 +15,7 @@ protocol CharacterListViewViewModelDelegate: AnyObject {
 final class CharacterListViewViewModel : NSObject {
     
     public weak var delegate: CharacterListViewViewModelDelegate?
+    private var isLoadindgMoreChatarcters = false
     
     private var characters : [ResultCharacter] = [] {
         didSet {
@@ -31,6 +32,8 @@ final class CharacterListViewViewModel : NSObject {
     
     private var cellViewModal: [RMCharacterCollectionViewCellViewModel] = []
     
+    private var apiInfo : Info? = nil
+    
     func fetchCharacters(){
         RMServise.shared.execute(.listCharactersRequests,
                                  expecting: RMCharacter.self) { [weak self]result in
@@ -38,7 +41,9 @@ final class CharacterListViewViewModel : NSObject {
             switch result {
             case .success(let responsemodel):
                 let results = responsemodel.results
+                let info = responsemodel.info
                 self?.characters = results
+                self?.apiInfo = info
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialCharacters()
                 }
@@ -48,6 +53,13 @@ final class CharacterListViewViewModel : NSObject {
         }
     }
     
+    public func fetchAdditionalCharacters(){
+        isLoadindgMoreChatarcters = true
+    }
+    
+    public var sholdShowLoadMoreIndicator: Bool {
+        return apiInfo?.next != nil
+    }
     
 }
 
@@ -65,6 +77,24 @@ extension CharacterListViewViewModel: UICollectionViewDataSource{
         cell.configure(with: cellViewModal[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter,
+        let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RMFooterLoadingCollectionReusableView.identefire, for: indexPath) as? RMFooterLoadingCollectionReusableView else {
+            fatalError("Unsupporting")
+        }
+        footer.startAnimeting()
+        return footer
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        guard sholdShowLoadMoreIndicator else {
+            return .zero
+        }
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
+  
 }
 
 extension CharacterListViewViewModel: UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{
@@ -80,4 +110,20 @@ extension CharacterListViewViewModel: UICollectionViewDelegate , UICollectionVie
         delegate?.didSelectCharacter(character)
     }
     
+}
+
+extension CharacterListViewViewModel: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard sholdShowLoadMoreIndicator else {
+            return
+        }
+        
+        let offset = scrollView.contentOffset.y
+        let totalContantHight = scrollView.contentSize.height
+        let totalScrollViewFixedHeight = scrollView.frame.size.height
+        
+        if offset >= (totalContantHight - totalScrollViewFixedHeight - 120){
+            fetchAdditionalCharacters()
+        }
+    }
 }

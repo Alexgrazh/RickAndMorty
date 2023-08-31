@@ -8,10 +8,10 @@
 import Foundation
 
 // MARK: - RMAPI
-struct RMCharacter: Codable {
-    let info: Info
-    let results: [ResultCharacter]
-}
+//struct RMCharacter: Codable {
+//    let info: Info
+//    let results: [ResultCharacter]
+//}
 
 // MARK: - Info
 struct Info: Codable {

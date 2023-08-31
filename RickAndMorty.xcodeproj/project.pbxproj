@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E71E2F282AA0DE91005555FD /* RMGetAllCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71E2F272AA0DE91005555FD /* RMGetAllCharactersResponse.swift */; };
+		E79B21322A0D582600A03E3B /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79B21312A0D582600A03E3B /* RMImageLoader.swift */; };
 		E79E53FC29D8980600174730 /* RMServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79E53FB29D8980600174730 /* RMServise.swift */; };
 		E79E53FE29D8981B00174730 /* RMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79E53FD29D8981B00174730 /* RMRequest.swift */; };
 		E79E540029D8998C00174730 /* RMEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79E53FF29D8998C00174730 /* RMEndpoint.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E71E2F272AA0DE91005555FD /* RMGetAllCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMGetAllCharactersResponse.swift; sourceTree = "<group>"; };
+		E79B21312A0D582600A03E3B /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageLoader.swift; sourceTree = "<group>"; };
 		E79E53FB29D8980600174730 /* RMServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMServise.swift; sourceTree = "<group>"; };
 		E79E53FD29D8981B00174730 /* RMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRequest.swift; sourceTree = "<group>"; };
 		E79E53FF29D8998C00174730 /* RMEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEndpoint.swift; sourceTree = "<group>"; };
@@ -73,6 +77,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E71E2F262AA0DE7E005555FD /* APIResponseTypes */ = {
+			isa = PBXGroup;
+			children = (
+				E71E2F272AA0DE91005555FD /* RMGetAllCharactersResponse.swift */,
+			);
+			path = APIResponseTypes;
+			sourceTree = "<group>";
+		};
+		E79B21302A0D576600A03E3B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E79B21312A0D582600A03E3B /* RMImageLoader.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E79E544B29E724D300174730 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +144,7 @@
 		E7C077FB29D6088C00B28276 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				E79B21302A0D576600A03E3B /* Managers */,
 				E7A38D8E29D60C7A00AF1EDA /* Resourses */,
 				E7C0781429D60B0B00B28276 /* APIClient */,
 				E7C0781329D60ADB00B28276 /* ViewModels */,
@@ -147,6 +168,7 @@
 		E7C0781129D60AAC00B28276 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E71E2F262AA0DE7E005555FD /* APIResponseTypes */,
 				E7A38D8F29D60D6000AF1EDA /* RMLocation.swift */,
 				E7A38D9129D60DA900AF1EDA /* RMCharacter.swift */,
 				E7A38D9329D60DC000AF1EDA /* RMEpisode.swift */,
@@ -278,10 +300,12 @@
 				E79E544F29E7279800174730 /* RMCharacterCollectionViewCellViewModel.swift in Sources */,
 				E7D15C1529F84AE0001E279B /* RMCharacterDetailViewViewModel.swift in Sources */,
 				E7A38D9229D60DA900AF1EDA /* RMCharacter.swift in Sources */,
+				E79B21322A0D582600A03E3B /* RMImageLoader.swift in Sources */,
 				E79E540029D8998C00174730 /* RMEndpoint.swift in Sources */,
 				E7A657C429F99786000EF41C /* RMFooterLoadingCollectionReusableView.swift in Sources */,
 				E7A38D9729D60ED800AF1EDA /* RMCharacterViewController.swift in Sources */,
 				E79E53FE29D8981B00174730 /* RMRequest.swift in Sources */,
+				E71E2F282AA0DE91005555FD /* RMGetAllCharactersResponse.swift in Sources */,
 				E79E542829E435DA00174730 /* CharacterListView.swift in Sources */,
 				E79E542629E4350600174730 /* CharacterListViewViewModel.swift in Sources */,
 				E7A38D9929D60EEA00AF1EDA /* RMEpisodeViewController.swift in Sources */,
@@ -352,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -406,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -423,6 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DY3ZU8WJY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RickAndMorty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -449,6 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DY3ZU8WJY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RickAndMorty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

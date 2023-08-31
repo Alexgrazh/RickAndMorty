@@ -30,14 +30,14 @@ final class RMFooterLoadingCollectionReusableView: UICollectionReusableView {
     
     private func addContraint(){
         NSLayoutConstraint.activate([
-            spinner.widthAnchor.constraint(equalToConstant: 100),
-            spinner.heightAnchor.constraint(equalToConstant: 100),
+            spinner.widthAnchor.constraint(equalToConstant: 50),
+            spinner.heightAnchor.constraint(equalToConstant: 50),
             spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
-    public func startAnimeting(){
+    public func startAnimating(){
         spinner.startAnimating()
     }
 }

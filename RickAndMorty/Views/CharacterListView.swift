@@ -13,7 +13,7 @@ protocol CharacterListViewDelegate: AnyObject{
 
 class CharacterListView: UIView {
 
-    private let viewModel = CharacterListViewViewModel()
+    private let viewModel = RMCharacterListViewViewModel()
     
     public weak var delegate: CharacterListViewDelegate?
     
@@ -44,13 +44,9 @@ class CharacterListView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(collectionView, spinner)
         addConstraints()
-        
         spinner.startAnimating()
-        
         viewModel.delegate = self
-        
         viewModel.fetchCharacters()
-        
         setUpCollectionView()
     }
     
@@ -80,20 +76,26 @@ class CharacterListView: UIView {
    
 }
 
-extension CharacterListView: CharacterListViewViewModelDelegate {
+extension CharacterListView: RMCharacterListViewViewModelDelegate {
+   
     func didSelectCharacter(_ character: ResultCharacter) {
         delegate?.rmCharacterLictView(self, didSelectCharacter: character)
     }
     
     
     func didLoadInitialCharacters() {
-        collectionView.reloadData()
-        collectionView.isHidden = false
         spinner.stopAnimating()
-     
-            UIView.animate(withDuration: 0.4){
-                self.collectionView.alpha = 1
-            }
+        collectionView.isHidden = false
+        collectionView.reloadData()
+        
+        UIView.animate(withDuration: 0.4){
+            self.collectionView.alpha = 1
+        }
+    }
     
+    func didLoadMoreCharacters(with newIndexPath: [IndexPath]) {
+        collectionView.performBatchUpdates {
+            self.collectionView.insertItems(at: newIndexPath)
+        }
     }
 }
